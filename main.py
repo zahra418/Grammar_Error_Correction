@@ -1,6 +1,8 @@
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from eval import correct_grammar
+import uvicorn
 
 app = FastAPI()
 
@@ -18,3 +20,6 @@ def correct_grammar_endpoint(text_data: TextData):
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Grammar Correction API!"}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
